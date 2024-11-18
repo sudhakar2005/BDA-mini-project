@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], 
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="text"]:focus, 
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        h3 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        @media (max-width: 480px) {
+            form {
+                padding: 15px;
+            }
+            input[type="text"], 
+            input[type="number"] {
+                font-size: 13px;
+            }
+            input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Predict Flight Price</h2>
+
+    <!-- Form for user input -->
+    <form action="/predict" method="POST">
+        <label for="Airline">Airline:</label>
+        <input type="text" name="Airline" id="Airline" required><br><br>
+
+        <label for="Source">Source:</label>
+        <input type="text" name="Source" id="Source" required><br><br>
+
+        <label for="Destination">Destination:</label>
+        <input type="text" name="Destination" id="Destination" required><br><br>
+
+        <label for="Total_Stops">Total Stops:</label>
+        <input type="number" name="Total_Stops" id="Total_Stops" required><br><br>
+
+        <label for="Dep_hours">Departure Hours:</label>
+        <input type="number" name="Dep_hours" id="Dep_hours" required><br><br>
+
+        <label for="Dep_min">Departure Minutes:</label>
+        <input type="number" name="Dep_min" id="Dep_min" required><br><br>
+
+        <label for="Arrival_hours">Arrival Hours:</label>
+        <input type="number" name="Arrival_hours" id="Arrival_hours" required><br><br>
+
+        <label for="Arrival_min">Arrival Minutes:</label>
+        <input type="number" name="Arrival_min" id="Arrival_min" required><br><br>
+
+        <label for="Duration_hours">Duration Hours:</label>
+        <input type="number" name="Duration_hours" id="Duration_hours" required><br><br>
+
+        <label for="Duration_min">Duration Minutes:</label>
+        <input type="number" name="Duration_min" id="Duration_min" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <!-- Display the prediction result -->
+    <h3>{{ prediction_text }}</h3>
+</body>
+</html>
